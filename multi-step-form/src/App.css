@@ -10,8 +10,10 @@
 
 .form-wrapper {
     display: flex;
+    align-items: center;
     width: 80%;
     height: 70%;
     background-color: var(--white);
     border-radius: 20px;
+    padding: 1em;
 }
