@@ -1,0 +1,66 @@
+.steps-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 35%;
+    height: 100%;
+    background-image: url('../assets/images/bg-sidebar-desktop.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.form-elements-wrapper {
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    gap : 2.5rem;
+}
+
+.form-element-wrapper {
+    display: flex;
+    gap : 1.5rem;
+    align-items: center;
+}
+
+.number {
+    width: 3rem;
+    height: 3rem;
+    background: transparent;
+    border : 2px solid white;
+    color : white;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap : 2rem;
+    aspect-ratio: 1;
+}
+
+.number.active {
+    border : none;
+    background-color: hsl(206, 94%, 87%);
+    color : black;
+    opacity: 0.8;
+    font-weight: 700;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap : .15rem;
+    text-transform: uppercase;
+
+    p {
+        color : hsl(231, 11%, 63%);
+        font-weight: 500;
+    }
+    h2 {
+        color : hsl(229, 24%, 87%);
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        font-weight: 700;
+    }
+}
