@@ -1,19 +1,20 @@
+import { Route, Routes , BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import FormInfoSection from "./components/FormInfoSection";
-import FormStepsSection from "./components/FormStepsSection";
 import "./index.css";
+import MainPage from "./components/routes/MainPage";
 
 function App() {
   return (
-    <div className="app">
-      <div className="form-wrapper">
-        <FormStepsSection />
-        <FormInfoSection
-          formHeader="Personal Info"
-          formInfo="Please provide your name, email address, and phone number."
-        />
+    <Router>
+      <div className="app">
+        <div className="form-wrapper">
+          <Routes>
+            <Route path="/" element={<MainPage></MainPage>}></Route>
+          </Routes>
+          
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
