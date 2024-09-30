@@ -1,4 +1,5 @@
 import './_FormInfoSection.scss'
+import SubmitButton from './buttons/FormButton';
 
 interface FormInfoSectionProps {
   formHeader: string;
@@ -30,6 +31,7 @@ export default function FormInfoSection({formHeader , formInfo} : FormInfoSectio
             <input type="text" name='phone' placeholder='e.g. +1 234 567 890' />
           </div>
           
+          <SubmitButton />
         </form>
       </section>
     </div>
