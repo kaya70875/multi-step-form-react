@@ -29,7 +29,7 @@
     height: 3rem;
     background: transparent;
     border : 2px solid white;
-    color : white;
+    color : var(--white);
     font-weight: 700;
     border-radius: 50%;
     display: flex;
@@ -41,7 +41,7 @@
 
 .number.active {
     border : none;
-    background-color: hsl(206, 94%, 87%);
+    background-color: var(--light-blue);
     color : black;
     opacity: 0.8;
     font-weight: 700;
@@ -54,11 +54,11 @@
     text-transform: uppercase;
 
     p {
-        color : hsl(231, 11%, 63%);
+        color : var(--cool-gray);
         font-weight: 500;
     }
     h2 {
-        color : hsl(229, 24%, 87%);
+        color : var(--light-gray);
         font-size: 1.3rem;
         letter-spacing: 1px;
         font-weight: 700;
