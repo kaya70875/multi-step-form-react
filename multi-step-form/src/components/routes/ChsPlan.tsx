@@ -37,6 +37,7 @@ export default function ChsPlan() {
     },
   ];
 
+  const [currentPlan , setCurrentPlan] = useState('monthly');
   const [toggleState, setToggleState] = useState(false);
   return (
     <>
@@ -56,7 +57,16 @@ export default function ChsPlan() {
                     </header>
                     <div className="card-info">
                       <h2>{card.title}</h2>
-                      <p>{card.price}</p>
+                      <p>{currentPlan === 'monthly' ? (
+                        `$${card.price}/mo`
+                      ) : (
+                        <span>
+                          ${(card.price * 10)}/yr
+                          <span style={{ color: "var(--marine-blue)" , display : 'flex'}}>
+                            2 months free
+                          </span>
+                        </span>
+                      )}</p>
                     </div>
                   </div>
                 ))}
@@ -80,6 +90,7 @@ export default function ChsPlan() {
                   onClick={(e) => {
                     setToggleState(!toggleState);
                     e.currentTarget.classList.toggle("active");
+                    setCurrentPlan(toggleState ? 'monthly' : 'yearly');
                   }}
                   src={toggleState ? toggleLeft : toggleRight}
                 />
