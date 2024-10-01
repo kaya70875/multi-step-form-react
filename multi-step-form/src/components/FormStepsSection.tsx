@@ -16,7 +16,7 @@ export default function FormStepsSection({currentStep} : FormStepsSectionProps) 
     <div className="steps-wrapper">
       <div className="form-elements-wrapper">
         {steps.map((step) => (
-          <section className="form-element-wrapper">
+          <section className="form-element-wrapper" key={step.number}>
             <div className={`number ${step.number === currentStep ? 'active' : ''}`}>{step.number}</div>
             <div className="info-section">
               <p>Step {step.number}</p>
