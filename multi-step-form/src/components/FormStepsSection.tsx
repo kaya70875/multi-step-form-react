@@ -1,10 +1,6 @@
 import "./_FormStepsSection.scss";
 
-export default function FormStepsSection({
-  activeStep,
-}: {
-  activeStep: number;
-}) {
+export default function FormStepsSection() {
   const steps = [
     { number: 1, title: "YOUR INFO" },
     { number: 2, title: "SELECT PLAN" },
@@ -17,7 +13,7 @@ export default function FormStepsSection({
       <div className="form-elements-wrapper">
         {steps.map((step) => (
           <section className="form-element-wrapper">
-            <div className={`number ${activeStep === step.number ? 'active' : ''}`}>{step.number}</div>
+            <div className="number">{step.number}</div>
             <div className="info-section">
               <p>Step {step.number}</p>
               <h2>{step.title}</h2>
