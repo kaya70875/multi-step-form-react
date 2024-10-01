@@ -29,3 +29,15 @@
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--cool-gray);
+  font-weight: 500;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}

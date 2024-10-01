@@ -56,7 +56,7 @@ export default function MainPage() {
 
   return (
     <>
-      <FormStepsSection />
+      <FormStepsSection currentStep={1}/>
       <FormInfoSection
         formHeader="Personal Info"
         formInfo="Please provide your name, email address, and phone number."

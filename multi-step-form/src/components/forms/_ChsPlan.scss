@@ -1,3 +1,9 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap : 2rem;
+}
+
 .cards-wrapper {
     display: flex;
     justify-content: space-between;
