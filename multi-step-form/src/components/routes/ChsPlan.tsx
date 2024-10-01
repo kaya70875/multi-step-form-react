@@ -7,6 +7,9 @@ import '../forms/_ChsPlan.scss';
 import arcade from "../../assets/images/icon-arcade.svg";
 import advanced from "../../assets/images/icon-advanced.svg";
 import pro from "../../assets/images/icon-pro.svg";
+import toggleLeft from "../../assets/images/toggle-circle-right-svgrepo-com.svg";
+import toggleRight from "../../assets/images/toggle-circle-left-svgrepo-com.svg";
+import { useState } from "react";
 
 export default function ChsPlan() {
 
@@ -33,6 +36,8 @@ export default function ChsPlan() {
             imgSrc: pro,
         },
     ];
+
+    const [toggleState, setToggleState] = useState(false);
   return (
     <>
       <FormStepsSection />
@@ -58,8 +63,12 @@ export default function ChsPlan() {
             </div>
 
             <div className="toggle-wrapper">
-                <p>Monthly</p>
-                <p>Yearly</p>
+                <p style={!toggleState ? {color : "var(--marine-blue)" , fontWeight : '700'} : {color : "var(--cool-gray)" , fontWeight : '500' ,transition : '0.3s ease'}}>Monthly</p>
+                <img onClick={(e) => {
+                  setToggleState(!toggleState);
+                  e.currentTarget.classList.toggle('active');
+                }} src={toggleState ? toggleLeft : toggleRight} />
+                <p style={toggleState ? {color : "var(--marine-blue)" , fontWeight : '700'} : {color : "var(--cool-gray)" , fontWeight : '500' , transition : '0.3s ease'}}>Yearly</p>
             </div>
 
             <SubmitButton />
