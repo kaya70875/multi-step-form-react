@@ -10,7 +10,6 @@ import advanced from "../../assets/images/icon-advanced.svg";
 import pro from "../../assets/images/icon-pro.svg";
 
 export default function ChsPlan() {
-    const [activeStep , setActiveStep] = useState<number>(1);
 
     const cards = [
         {
@@ -37,7 +36,7 @@ export default function ChsPlan() {
     ];
   return (
     <>
-      <FormStepsSection activeStep={activeStep} />
+      <FormStepsSection />
       <FormInfoSection
         formHeader="Select Your Plan"
         formInfo="You have the option of monthly or yearly billing."
@@ -59,9 +58,12 @@ export default function ChsPlan() {
                 
             </div>
 
-            
+            <div className="toggle-wrapper">
+                <p>Monthly</p>
+                <p>Yearly</p>
+            </div>
 
-            <SubmitButton setActiveStep={setActiveStep} />
+            <SubmitButton />
           </form>
         </section>
       </FormInfoSection>
