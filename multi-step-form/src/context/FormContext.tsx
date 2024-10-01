@@ -16,8 +16,8 @@ const FormContext = createContext<FormContextType | null>(null);
 const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
     const [formData, setFormData] = useState<FormData>({
-        plan : '',
-        billing : '',
+        plan : 'Arcade',
+        billing : 'Monthly',
         addOns : [],
     });
 
