@@ -11,6 +11,8 @@ import toggleLeft from "../../assets/images/toggle-circle-right-svgrepo-com.svg"
 import toggleRight from "../../assets/images/toggle-circle-left-svgrepo-com.svg";
 import { useState } from "react";
 import PreviousButton from "../buttons/PreviousButton";
+import { useFormContext } from "../../context/FormContext";
+import { useNavigate } from "react-router-dom";
 
 export default function ChsPlan() {
   const cards = [
@@ -37,8 +39,26 @@ export default function ChsPlan() {
     },
   ];
 
-  const [currentPlan , setCurrentPlan] = useState('monthly');
   const [toggleState, setToggleState] = useState(false);
+  const [selectedCardId , setSelectedCardId] = useState<string | null>('1');
+
+  const {formData, setFormData} = useFormContext()!;
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate('');
+  }
+
+  const handleCardSelection = (cardId : string) => {
+    setSelectedCardId(cardId);
+    setFormData({
+      ...formData,
+      plan : cardId,
+    })
+  }
+
   return (
     <>
       <FormStepsSection currentStep={2} />
@@ -47,17 +67,17 @@ export default function ChsPlan() {
         formInfo="You have the option of monthly or yearly billing."
       >
         <section className="form">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="content">
               <div className="cards-wrapper">
                 {cards.map((card) => (
-                  <div className="card" id={card.id}>
+                  <div className={`card ${selectedCardId === card.id ? 'active' : ''}`} id={card.title} onClick={() => handleCardSelection(card.id)} key={card.id}>
                     <header>
                       <img src={card.imgSrc} alt={card.title} />
                     </header>
                     <div className="card-info">
                       <h2>{card.title}</h2>
-                      <p>{currentPlan === 'monthly' ? (
+                      <p>{formData.billing === 'Monthly' ? (
                         `$${card.price}/mo`
                       ) : (
                         <span>
@@ -90,7 +110,10 @@ export default function ChsPlan() {
                   onClick={(e) => {
                     setToggleState(!toggleState);
                     e.currentTarget.classList.toggle("active");
-                    setCurrentPlan(toggleState ? 'monthly' : 'yearly');
+                    setFormData({
+                      ...formData,
+                      billing : toggleState ? 'Monthly' : 'Yearly'
+                    })
                   }}
                   src={toggleState ? toggleLeft : toggleRight}
                 />
