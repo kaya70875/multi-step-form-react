@@ -53,6 +53,12 @@
     padding: 1.5em;
     border : 2px solid var(--light-gray);
     border-radius: 10px;
+    outline: none;
+    transition: 0.2s ease-in;
+
+    &:focus {
+        border : 2px solid var(--purplish-blue);
+    }
 }
 
 .input-wrapper input::placeholder {
