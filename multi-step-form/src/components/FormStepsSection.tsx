@@ -1,41 +1,30 @@
-import './_FormStepsSection.scss';
+import "./_FormStepsSection.scss";
 
-export default function FormStepsSection() {
+export default function FormStepsSection({
+  activeStep,
+}: {
+  activeStep: number;
+}) {
+  const steps = [
+    { number: 1, title: "YOUR INFO" },
+    { number: 2, title: "SELECT PLAN" },
+    { number: 3, title: "ADD-ONS" },
+    { number: 4, title: "SUMMARY" },
+  ];
+
   return (
     <div className="steps-wrapper">
-        <div className="form-elements-wrapper">
-            <section className="form-element-wrapper">
-                <div className="number active">1</div>
-                <div className="info-section">
-                    <p>Step 1</p>
-                    <h2>YOUR INFO</h2>
-                </div>
-            </section>
-
-            <section className="form-element-wrapper">
-                <div className="number">2</div>
-                <div className="info-section">
-                    <p>Step 2</p>
-                    <h2>SELECT PLAN</h2>
-                </div>
-            </section>
-
-            <section className="form-element-wrapper">
-                <div className="number">3</div>
-                <div className="info-section">
-                    <p>Step 3</p>
-                    <h2>ADD-ONS</h2>
-                </div>
-            </section>
-
-            <section className="form-element-wrapper">
-                <div className="number">4</div>
-                <div className="info-section">
-                    <p>Step 4</p>
-                    <h2>SUMMARY</h2>
-                </div>
-            </section>
-        </div>
+      <div className="form-elements-wrapper">
+        {steps.map((step) => (
+          <section className="form-element-wrapper">
+            <div className={`number ${activeStep === step.number ? 'active' : ''}`}>{step.number}</div>
+            <div className="info-section">
+              <p>Step {step.number}</p>
+              <h2>{step.title}</h2>
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
