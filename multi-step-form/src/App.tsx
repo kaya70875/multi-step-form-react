@@ -4,6 +4,7 @@ import "./index.css";
 import MainPage from "./components/routes/MainPage";
 import ChsPlan from "./components/routes/ChsPlan";
 import FormProvider from "./context/FormContext";
+import AddOns from "./components/routes/AddOns";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Routes>
               <Route path="/" element={<MainPage></MainPage>}></Route>
               <Route path="/select-plan" element={<ChsPlan></ChsPlan>}></Route>
+              <Route path="/add-ons" element={<AddOns></AddOns>}></Route>
             </Routes>
 
           </div>

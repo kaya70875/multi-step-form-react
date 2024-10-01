@@ -48,7 +48,7 @@ export default function ChsPlan() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate('');
+    navigate('/add-ons');
   }
 
   const handleCardSelection = (cardId : string) => {
