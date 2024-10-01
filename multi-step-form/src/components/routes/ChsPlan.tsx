@@ -2,6 +2,7 @@ import { useState } from "react";
 import FormInfoSection from "../FormInfoSection";
 import FormStepsSection from "../FormStepsSection";
 import SubmitButton from "../buttons/FormButton";
+import '../forms/_ChsPlan.scss';
 
 // Import Images
 import arcade from "../../assets/images/icon-arcade.svg";
@@ -10,7 +11,7 @@ import pro from "../../assets/images/icon-pro.svg";
 
 export default function ChsPlan() {
     const [activeStep , setActiveStep] = useState<number>(1);
-    
+
     const cards = [
         {
             id: '1',
@@ -57,6 +58,8 @@ export default function ChsPlan() {
                 ))}
                 
             </div>
+
+            
 
             <SubmitButton setActiveStep={setActiveStep} />
           </form>
