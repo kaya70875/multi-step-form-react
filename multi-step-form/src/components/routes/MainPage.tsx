@@ -63,52 +63,54 @@ export default function MainPage() {
       >
         <section className="form">
           <form onSubmit={handleSubmit}>
-            <div className="input-wrapper">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="e.g. Stephen King"
-                onChange={handleChange}
-                value={formData.name}
-              />
-              {errors.name && (
-                <p style={{ color: "var(--strawberry-red)" }}>
-                  This Field Is Required
-                </p>
-              )}
-            </div>
+            <div className="all-inputs">
+              <div className="input-wrapper">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="e.g. Stephen King"
+                  onChange={handleChange}
+                  value={formData.name}
+                />
+                {errors.name && (
+                  <p style={{ color: "var(--strawberry-red)" }}>
+                    This Field Is Required
+                  </p>
+                )}
+              </div>
 
-            <div className="input-wrapper">
-              <label htmlFor="email">Email Address</label>
-              <input
-                type="text"
-                name="email"
-                placeholder="e.g. Stephenking@lorem.com"
-                onChange={handleChange}
-                value={formData.email}
-              />
-              {errors.email && (
-                <p style={{ color: "var(--strawberry-red)" }}>
-                  This Field Is Required
-                </p>
-              )}
-            </div>
+              <div className="input-wrapper">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="e.g. Stephenking@lorem.com"
+                  onChange={handleChange}
+                  value={formData.email}
+                />
+                {errors.email && (
+                  <p style={{ color: "var(--strawberry-red)" }}>
+                    This Field Is Required
+                  </p>
+                )}
+              </div>
 
-            <div className="input-wrapper">
-              <label htmlFor="phone">Phone Number</label>
-              <input
-                type="text"
-                name="phone"
-                placeholder="e.g. +1 234 567 890"
-                onChange={handleChange}
-                value={formData.phone}
-              />
-              {errors.phone && (
-                <p style={{ color: "var(--strawberry-red)" }}>
-                  This Field Is Required
-                </p>
-              )}
+              <div className="input-wrapper">
+                <label htmlFor="phone">Phone Number</label>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="e.g. +1 234 567 890"
+                  onChange={handleChange}
+                  value={formData.phone}
+                />
+                {errors.phone && (
+                  <p style={{ color: "var(--strawberry-red)" }}>
+                    This Field Is Required
+                  </p>
+                )}
+              </div>
             </div>
 
             <SubmitButton />
