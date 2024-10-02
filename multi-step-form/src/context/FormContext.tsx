@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface FormContextType {
     formData: FormData;
@@ -18,11 +18,18 @@ const FormContext = createContext<FormContextType | null>(null);
 
 const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
-    const [formData, setFormData] = useState<FormData>({
-        plan : 'Arcade',
-        billing : 'Monthly',
-        addOns : [],
+    const [formData, setFormData] = useState<FormData>(() => {
+        const savedData = localStorage.getItem('formData');
+        return savedData ? JSON.parse(savedData) : {
+            plan: 'Arcade',
+            billing: 'Monthly',
+            addOns: [],
+        };
     });
+
+    useEffect(() => {
+        localStorage.setItem('formData' , JSON.stringify(formData));
+    } , [formData]);
 
     return (
         <FormContext.Provider value={{ formData, setFormData }}>
