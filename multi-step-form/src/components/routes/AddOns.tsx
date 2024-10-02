@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useFormContext } from "../../context/FormContext";
 import FormInfoSection from "../FormInfoSection";
 import FormStepsSection from "../FormStepsSection";
@@ -51,6 +52,8 @@ export default function AddOns() {
         ]
     };
 
+    console.log(formData.addOns);
+
     const handleCardClick = (e: React.MouseEvent<HTMLDivElement>, card: { title: string, price: number }) => {
         e.currentTarget.classList.toggle('active');
         if (e.currentTarget.classList.contains('active')) {
@@ -79,11 +82,11 @@ export default function AddOns() {
                     <div className="cards-container">
                         {formData.billing === 'Monthly' ? (
                             addOnCards.monthly.map(card => (
-                                <div className="addon-card" id={card.title} key={card.id} onClick={(e) => handleCardClick(e, card)}>
+                                <div className={`addon-card ${formData.addOns.some(addon => addon.title === card.title) ? 'active' : ''}`} id={card.title} key={card.id} onClick={(e) => handleCardClick(e, card)}>
                                     <div className="addon-card-content">
                                         <div className="card-checkbox">
                                             <input type="checkbox"
-                                            checked={formData.addOns.some(addOn => addOn.title === card.title)} />
+                                            checked={formData.addOns.some(addOn => addOn.title === card.title)} readOnly/>
                                         </div>
                                         <header className="card-header">
                                             <div className="addon-card-title">
@@ -101,11 +104,11 @@ export default function AddOns() {
                             ))
                         ) : (
                             addOnCards.yearly.map(card => (
-                                <div className="addon-card" id={card.title} key={card.id} onClick={(e) => handleCardClick(e, card)}>
+                                <div className={`addon-card ${formData.addOns.some(addon => addon.title === card.title) ? 'active' : ''}`} id={card.title} key={card.id} onClick={(e) => handleCardClick(e, card)}>
                                     <div className="addon-card-content">
                                         <div className="card-checkbox">
                                             <input type="checkbox"
-                                            checked={formData.addOns.some(addOn => addOn.title === card.title)} />
+                                            checked={formData.addOns.some(addOn => addOn.title === card.title)} readOnly />
                                         </div>
                                         <header className="card-header">
                                             <div className="addon-card-title">
