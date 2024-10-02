@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useFormContext } from "../../context/FormContext";
 import FormInfoSection from "../FormInfoSection";
 import FormStepsSection from "../FormStepsSection";

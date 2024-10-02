@@ -9,7 +9,7 @@ import advanced from "../../assets/images/icon-advanced.svg";
 import pro from "../../assets/images/icon-pro.svg";
 import toggleLeft from "../../assets/images/toggle-circle-right-svgrepo-com.svg";
 import toggleRight from "../../assets/images/toggle-circle-left-svgrepo-com.svg";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PreviousButton from "../buttons/PreviousButton";
 import { useFormContext } from "../../context/FormContext";
 import { useNavigate } from "react-router-dom";
@@ -38,25 +38,34 @@ export default function ChsPlan() {
       imgSrc: pro,
     },
   ];
-
-  const [toggleState, setToggleState] = useState(false);
-  const [selectedCardId , setSelectedCardId] = useState<string | null>('1');
-
-  const {formData, setFormData} = useFormContext()!;
+  const { formData, setFormData } = useFormContext()!;
+  const [toggleState, setToggleState] = useState(formData.billing === 'Yearly');
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setToggleState(formData.billing === 'Yearly');
+  } , [formData.billing])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate('/add-ons');
   }
 
-  const handleCardSelection = (cardId : string) => {
-    setSelectedCardId(cardId);
+  const handleCardSelection = (cardTitle: string) => {
     setFormData({
       ...formData,
-      plan : cardId,
+      plan: cardTitle,
     })
+  }
+
+  const handleToggleClick = (e : React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.classList.toggle("active");
+    setFormData({
+      ...formData,
+      billing: toggleState ? 'Monthly' : 'Yearly'
+    })
+    setToggleState(!toggleState);
   }
 
   return (
@@ -71,7 +80,7 @@ export default function ChsPlan() {
             <div className="content">
               <div className="cards-wrapper">
                 {cards.map((card) => (
-                  <div className={`card ${selectedCardId === card.id ? 'active' : ''}`} id={card.title} onClick={() => handleCardSelection(card.id)} key={card.id}>
+                  <div className={`card ${formData.plan === card.title ? 'active' : ''}`} id={card.title} onClick={() => handleCardSelection(card.title)} key={card.id}>
                     <header>
                       <img src={card.imgSrc} alt={card.title} />
                     </header>
@@ -82,7 +91,7 @@ export default function ChsPlan() {
                       ) : (
                         <span>
                           ${(card.price * 10)}/yr
-                          <span style={{ color: "var(--marine-blue)" , display : 'flex'}}>
+                          <span style={{ color: "var(--marine-blue)", display: 'flex' }}>
                             2 months free
                           </span>
                         </span>
@@ -98,23 +107,16 @@ export default function ChsPlan() {
                     !toggleState
                       ? { color: "var(--marine-blue)", fontWeight: "700" }
                       : {
-                          color: "var(--cool-gray)",
-                          fontWeight: "500",
-                          transition: "0.3s ease",
-                        }
+                        color: "var(--cool-gray)",
+                        fontWeight: "500",
+                        transition: "0.3s ease",
+                      }
                   }
                 >
                   Monthly
                 </p>
                 <img
-                  onClick={(e) => {
-                    setToggleState(!toggleState);
-                    e.currentTarget.classList.toggle("active");
-                    setFormData({
-                      ...formData,
-                      billing : toggleState ? 'Monthly' : 'Yearly'
-                    })
-                  }}
+                  onClick={handleToggleClick}
                   src={toggleState ? toggleLeft : toggleRight}
                 />
                 <p
@@ -122,10 +124,10 @@ export default function ChsPlan() {
                     toggleState
                       ? { color: "var(--marine-blue)", fontWeight: "700" }
                       : {
-                          color: "var(--cool-gray)",
-                          fontWeight: "500",
-                          transition: "0.3s ease",
-                        }
+                        color: "var(--cool-gray)",
+                        fontWeight: "500",
+                        transition: "0.3s ease",
+                      }
                   }
                 >
                   Yearly

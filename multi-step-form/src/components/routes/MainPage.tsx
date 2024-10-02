@@ -3,15 +3,12 @@ import FormInfoSection from "../FormInfoSection";
 import SubmitButton from "../buttons/FormButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormContext } from "../../context/FormContext";
 
 export default function MainPage() {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
+  const {formData, setFormData} = useFormContext()!;
 
   const [errors, setErrors] = useState({
     name: false,
@@ -23,10 +20,10 @@ export default function MainPage() {
     const { name, value } = e.target;
 
     // Update the form data
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData({
+      ...formData,
       [name]: value,
-    }));
+    });
 
     // Clear the error if the field now has a value
     if (value.trim() !== "") {

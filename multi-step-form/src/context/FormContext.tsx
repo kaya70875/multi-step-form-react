@@ -6,6 +6,9 @@ interface FormContextType {
 }
 
 export interface FormData {
+    name: string;
+    email: string;
+    phone: string;
     plan: string;
     billing: string;
     addOns: {
@@ -21,6 +24,9 @@ const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     const [formData, setFormData] = useState<FormData>(() => {
         const savedData = localStorage.getItem('formData');
         return savedData ? JSON.parse(savedData) : {
+            name: '',
+            email: '',
+            phone: '',
             plan: 'Arcade',
             billing: 'Monthly',
             addOns: [],
