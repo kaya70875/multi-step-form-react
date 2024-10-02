@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useFormContext } from "../../context/FormContext";
 import FormInfoSection from "../FormInfoSection";
 import FormStepsSection from "../FormStepsSection";
@@ -51,7 +52,7 @@ export default function AddOns() {
         ]
     };
 
-    console.log(formData.addOns);
+    console.log(formData);
 
     const handleCardClick = (e: React.MouseEvent<HTMLDivElement>, card: { title: string, price: number }) => {
         e.currentTarget.classList.toggle('active');
@@ -72,6 +73,22 @@ export default function AddOns() {
             })
         }
     }
+
+    useEffect(() => {
+        // When billing changes, update add-ons price to match current billing cycle
+        const updatedAddOns = formData.addOns.map(addOn => {
+            const selectedCard = (formData.billing === 'Monthly')
+                ? addOnCards.monthly.find(card => card.title === addOn.title)
+                : addOnCards.yearly.find(card => card.title === addOn.title);
+            
+            return selectedCard ? { ...addOn, price: selectedCard.price.toString() } : addOn;
+        });
+
+        setFormData({
+            ...formData,
+            addOns: updatedAddOns
+        });
+    }, [formData.billing]); // Run effect when billing changes
 
     return (
         <>
