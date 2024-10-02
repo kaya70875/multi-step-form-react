@@ -8,7 +8,10 @@ interface FormContextType {
 export interface FormData {
     plan: string;
     billing: string;
-    addOns: string[];
+    addOns: {
+        title : string;
+        price : string;
+    }[];
 }
 
 const FormContext = createContext<FormContextType | null>(null);
