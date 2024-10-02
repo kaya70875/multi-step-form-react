@@ -82,7 +82,8 @@ export default function AddOns() {
                                 <div className="addon-card" id={card.title} key={card.id} onClick={(e) => handleCardClick(e, card)}>
                                     <div className="addon-card-content">
                                         <div className="card-checkbox">
-                                            <input type="checkbox" />
+                                            <input type="checkbox"
+                                            checked={formData.addOns.some(addOn => addOn.title === card.title)} />
                                         </div>
                                         <header className="card-header">
                                             <div className="addon-card-title">
@@ -103,7 +104,8 @@ export default function AddOns() {
                                 <div className="addon-card" id={card.title} key={card.id} onClick={(e) => handleCardClick(e, card)}>
                                     <div className="addon-card-content">
                                         <div className="card-checkbox">
-                                            <input type="checkbox" />
+                                            <input type="checkbox"
+                                            checked={formData.addOns.some(addOn => addOn.title === card.title)} />
                                         </div>
                                         <header className="card-header">
                                             <div className="addon-card-title">
