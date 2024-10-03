@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://{kaya70875}.github.io/multi-step-form-react",
+  "homepage": "https://kaya70875.github.io/multi-step-form-react",
 
   "scripts": {
     "dev": "vite",
