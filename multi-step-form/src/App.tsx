@@ -5,6 +5,7 @@ import MainPage from "./components/routes/MainPage";
 import ChsPlan from "./components/routes/ChsPlan";
 import FormProvider from "./context/FormContext";
 import AddOns from "./components/routes/AddOns";
+import ConfirmPage from "./components/routes/ConfirmPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Route path="/" element={<MainPage></MainPage>}></Route>
               <Route path="/select-plan" element={<ChsPlan></ChsPlan>}></Route>
               <Route path="/add-ons" element={<AddOns></AddOns>}></Route>
+              <Route path="/confirm" element={<ConfirmPage></ConfirmPage>}></Route>
             </Routes>
 
           </div>
