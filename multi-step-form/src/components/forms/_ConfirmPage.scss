@@ -40,6 +40,9 @@
 
         a {
             color : var(--cool-gray);
+            &:active {
+                color : var(--purplish-blue);
+            }
         }
     }
 }
