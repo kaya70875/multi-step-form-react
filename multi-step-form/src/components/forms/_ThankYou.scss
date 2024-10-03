@@ -1,0 +1,30 @@
+.thank-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 75%;
+    height: 100%;
+}
+
+.thank-header {
+    display: flex;
+    flex-direction: column;
+    gap : .75rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1em;
+
+    h1 {
+        color : var(--marine-blue);
+        font-size: 2rem;
+    }
+
+    p {
+        color : var(--cool-gray);
+        max-width: 30rem;
+        font-size: 1.1rem;
+    }
+}
