@@ -64,7 +64,7 @@ export default function AddOns() {
                     ...formData.addOns, // Retain the previous add-ons
                     {
                         title: card.title,
-                        price: card.price.toString()
+                        price: card.price
                     }]
             })
         } else {
@@ -82,7 +82,7 @@ export default function AddOns() {
                 ? addOnCards.monthly.find(card => card.title === addOn.title)
                 : addOnCards.yearly.find(card => card.title === addOn.title);
             
-            return selectedCard ? { ...addOn, price: selectedCard.price.toString() } : addOn;
+            return selectedCard ? { ...addOn, price: selectedCard.price } : addOn;
         });
 
         setFormData({

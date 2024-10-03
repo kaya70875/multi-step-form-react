@@ -14,7 +14,7 @@ export interface FormData {
     price : number;
     addOns: {
         title : string;
-        price : string;
+        price : number;
     }[];
 }
 
@@ -31,6 +31,7 @@ const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
             plan: 'Arcade',
             billing: 'Monthly',
             addOns: [],
+            price : 0,
         };
     });
 
