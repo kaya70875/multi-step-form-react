@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 interface FormContextType {
     formData: FormData;
+    formSubmitted: boolean;
+    setFormSubmitted: (submitted: boolean) => void;
     setFormData: (data: FormData) => void;
 }
 
@@ -35,12 +37,14 @@ const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
         };
     });
 
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
     useEffect(() => {
         localStorage.setItem('formData' , JSON.stringify(formData));
     } , [formData]);
 
     return (
-        <FormContext.Provider value={{ formData, setFormData }}>
+        <FormContext.Provider value={{ formData, setFormData  , formSubmitted, setFormSubmitted}}>
             {children}
         </FormContext.Provider>
     )

@@ -5,11 +5,12 @@ import FormInfoSection from "../FormInfoSection";
 import FormStepsSection from "../FormStepsSection";
 import '../forms/_ConfirmPage.scss';
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ConfirmPage() {
-    const { formData } = useFormContext();
+    const { formData , setFormSubmitted} = useFormContext();
     const [addOnsTotal, setAddOnsTotal] = useState(0);
+    const navigate = useNavigate();
 
     // Calculate add-ons total when formData.addOns or formData.billing changes
     useEffect(() => {
@@ -19,11 +20,19 @@ export default function ConfirmPage() {
         setAddOnsTotal(total);
     }, [formData.addOns, formData.billing]);
 
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        setFormSubmitted(true);
+
+        navigate('/thank-you');
+
+    }
+
     return (
         <>
             <FormStepsSection currentStep={4} />
             <FormInfoSection formHeader="Finishing Up" formInfo="Double-check everything looks OK before comfirming.">
-                <form className="confirm-wrapper">
+                <form onSubmit={handleSubmit} className="confirm-wrapper">
                     <div className="sections-wrapper">
                         <section className="plan-info">
                             <header className="plan-info-header">
