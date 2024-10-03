@@ -1,32 +1,38 @@
-import { Route, Routes, HashRouter as Router } from "react-router-dom";
+import { Route, Routes, HashRouter as Router, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import "./App.css";
-import "./index.css";
 import MainPage from "./components/routes/MainPage";
 import ChsPlan from "./components/routes/ChsPlan";
-import FormProvider from "./context/FormContext";
 import AddOns from "./components/routes/AddOns";
 import ConfirmPage from "./components/routes/ConfirmPage";
 import ThankYou from "./components/routes/ThankYou";
+import FormProvider from "./context/FormContext";
 import ProtectedRoute from "./components/protected-routes/ProtectedRoute";
 
 function App() {
+  const location = useLocation();
+
   return (
     <FormProvider>
       <Router>
         <div className="app">
           <div className="form-wrapper">
-            <Routes>
-              <Route path="/" element={<MainPage></MainPage>}></Route>
-              <Route path="/select-plan" element={<ChsPlan></ChsPlan>}></Route>
-              <Route path="/add-ons" element={<AddOns></AddOns>}></Route>
-              <Route path="/confirm" element={<ConfirmPage></ConfirmPage>}></Route>
-              
-              {/* Protected Routes */}
-              <Route path="/thank-you" element={<ProtectedRoute>
-                <ThankYou />
-              </ProtectedRoute>}></Route>
-            </Routes>
-
+            <AnimatePresence exitBeforeEnter>
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/select-plan" element={<ChsPlan />} />
+                <Route path="/add-ons" element={<AddOns />} />
+                <Route path="/confirm" element={<ConfirmPage />} />
+                <Route
+                  path="/thank-you"
+                  element={
+                    <ProtectedRoute>
+                      <ThankYou />
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
+            </AnimatePresence>
           </div>
         </div>
       </Router>
