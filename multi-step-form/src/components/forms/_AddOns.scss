@@ -51,8 +51,8 @@
 }
 
 .card-checkbox input {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.1rem;
+    height: 1.1rem;
 
     accent-color: var(--purplish-blue);
     cursor: pointer;
@@ -60,4 +60,35 @@
 
 .addon-card-price p {
     color : var(--purplish-blue)
+}
+
+@media (max-width : 450px) {
+
+    .form-info-section {
+        gap : 1rem;
+    }
+
+    .addon-card {
+        padding: .8em;
+    }
+
+    .addon-card-content {
+        gap : .9rem;
+    }
+    
+    .addon-card-title h3 {
+        font-size: .9rem;
+    }
+
+    .addon-card-description p {
+        font-size: .8rem;
+    }
+
+    .addon-card-price p{
+        font-size: .8rem;
+    }
+
+    .card-header {
+        gap : .5rem;
+    }
 }

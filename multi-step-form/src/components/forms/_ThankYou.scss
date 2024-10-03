@@ -6,6 +6,8 @@
     gap: 1rem;
     width: 75%;
     height: 100%;
+
+    background: white;
 }
 
 .thank-header {
@@ -26,5 +28,11 @@
         color : var(--cool-gray);
         max-width: 30rem;
         font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .thank-wrapper {
+        width: 100%;
     }
 }

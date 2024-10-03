@@ -49,3 +49,13 @@
     color: var(--marine-blue);
   }
 }
+
+@media(max-width: 450px) {
+  .primary-btn , .secondary-btn {
+    font-size: .8rem;
+  }
+
+  .primary-btn {
+    padding: .8rem 1.5rem;
+  }
+}

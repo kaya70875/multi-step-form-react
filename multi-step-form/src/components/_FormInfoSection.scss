@@ -76,3 +76,130 @@
     font-size: 1rem;
     font-weight: 500;
 }
+
+@media (max-width: 1180px) {
+
+    .form-wrapper {
+        width: 90%;
+    }
+
+    .form-info-section {
+        padding-inline: 2em;
+    }
+
+    .form-elements-wrapper {
+        width: 100%;
+    }
+
+    .form-element-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap : .75rem;
+
+        .info-section {
+            text-align: center;
+
+            h2{
+                text-wrap: nowrap;
+                font-size: 1.2rem;
+            }
+        }
+
+        .number {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .form-wrapper {
+        width: 100%;
+    }
+}
+
+/* Mobile Breakpoint */
+
+@media (max-width: 650px) {
+    .form-wrapper {
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        padding: 0;
+
+        background: var(--magenta);
+    }
+
+    .form-elements-wrapper {
+        flex-direction: row;
+        align-items: start;
+        justify-content: center;
+        height: 100%;
+        padding : 5em;
+        gap : 1.2rem;
+
+        background: url('../assets/images/bg-sidebar-mobile.svg') no-repeat;
+        background-size: cover;
+    }
+
+    .steps-wrapper {
+        min-width: 100%;
+        height: auto;
+
+        .info-section {
+            display: none;
+        }
+    }
+
+    .form-info-section {
+        width: 90%;
+        align-items: start;
+        background: var(--white);
+        margin-top : -3em;
+
+        border-radius: 15px;
+
+        padding-block: 2.5em;
+    }
+
+    .cards-wrapper {
+        flex-direction: column;
+
+        .card {
+            flex-direction: row;
+            gap : 1rem;
+        }
+    }
+
+    .form-header {
+        h2 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        };
+    }
+}
+
+@media (max-width: 450px) {
+    .form-header {
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: .85rem;
+        };
+    }
+
+    .input-wrapper {
+        label {
+            font-size: .8rem;
+        }
+        
+        input {
+            padding: 1em;
+        }
+    }
+}

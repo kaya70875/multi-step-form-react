@@ -86,3 +86,51 @@
         color : var(--purplish-blue);
     }
 }
+
+@media (max-width : 650px) {
+    .sections-wrapper {
+        height: 50%;
+    }
+}
+
+@media (max-width : 450px) {
+
+    .sections-wrapper {
+        height: 40%;
+    }
+
+    .plan-info {
+        p {
+            font-size: .85rem!important;
+        }
+    }
+    .plan-info-header {
+        h2 {
+            font-size: 1rem!important;
+        }
+
+        a {
+            font-size: .85rem!important;
+        }
+    }
+
+    .add-on-info {
+        h4 {
+            font-size: .85rem!important;
+        }
+
+        p {
+            font-size: .85rem!important;
+        }
+    }
+
+    .total {
+        h2 {
+            font-size: 1.1rem!important;
+        }
+
+        p {
+            font-size: .85rem!important;
+        }
+    }
+}
