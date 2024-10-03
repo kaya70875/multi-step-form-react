@@ -5,6 +5,7 @@ import FormInfoSection from "../FormInfoSection";
 import FormStepsSection from "../FormStepsSection";
 import '../forms/_ConfirmPage.scss';
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function ConfirmPage() {
     const { formData } = useFormContext();
@@ -27,7 +28,7 @@ export default function ConfirmPage() {
                         <section className="plan-info">
                             <header className="plan-info-header">
                                 <h2>{`${formData.plan}(${formData.billing})`}</h2>
-                                <a href="">Change</a>
+                                <Link to="/select-plan">Change</Link>
                             </header>
                             {formData.billing === 'Monthly' ? (
                                 <p>
