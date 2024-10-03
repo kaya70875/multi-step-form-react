@@ -5,6 +5,7 @@ import FormStepsSection from "../FormStepsSection";
 import SubmitButton from "../buttons/FormButton";
 import PreviousButton from "../buttons/PreviousButton";
 import '../forms/_AddOns.scss';
+import { useNavigate } from "react-router-dom";
 
 export default function AddOns() {
     const { formData, setFormData } = useFormContext();
@@ -52,7 +53,7 @@ export default function AddOns() {
         ]
     };
 
-    console.log(formData);
+    const navigate = useNavigate();
 
     const handleCardClick = (e: React.MouseEvent<HTMLDivElement>, card: { title: string, price: number }) => {
         e.currentTarget.classList.toggle('active');
@@ -90,11 +91,16 @@ export default function AddOns() {
         });
     }, [formData.billing]); // Run effect when billing changes
 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        navigate('/confirm');
+    }
+
     return (
         <>
             <FormStepsSection currentStep={3} />
             <FormInfoSection formHeader="Pick add-ons" formInfo="Add-ons help enhance your gaming experience.">
-                <div className="addons-wrapper">
+                <form onSubmit={handleSubmit} className="addons-wrapper">
                     <div className="cards-container">
                         {formData.billing === 'Monthly' ? (
                             addOnCards.monthly.map(card => (
@@ -146,7 +152,7 @@ export default function AddOns() {
                         <SubmitButton />
                         <PreviousButton />
                     </div>
-                </div>
+                </form>
             </FormInfoSection>
         </>
     )
