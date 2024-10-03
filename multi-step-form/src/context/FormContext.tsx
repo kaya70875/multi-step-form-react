@@ -11,6 +11,7 @@ export interface FormData {
     phone: string;
     plan: string;
     billing: string;
+    price : number;
     addOns: {
         title : string;
         price : string;

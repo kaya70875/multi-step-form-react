@@ -52,10 +52,11 @@ export default function ChsPlan() {
     navigate('/add-ons');
   }
 
-  const handleCardSelection = (cardTitle: string) => {
+  const handleCardSelection = (cardTitle: string , cardPrice : number) => {
     setFormData({
       ...formData,
       plan: cardTitle,
+      price : cardPrice
     })
   }
 
@@ -80,7 +81,7 @@ export default function ChsPlan() {
             <div className="content">
               <div className="cards-wrapper">
                 {cards.map((card) => (
-                  <div className={`card ${formData.plan === card.title ? 'active' : ''}`} id={card.title} onClick={() => handleCardSelection(card.title)} key={card.id}>
+                  <div className={`card ${formData.plan === card.title ? 'active' : ''}`} id={card.title} onClick={() => handleCardSelection(card.title , card.price)} key={card.id}>
                     <header>
                       <img src={card.imgSrc} alt={card.title} />
                     </header>
