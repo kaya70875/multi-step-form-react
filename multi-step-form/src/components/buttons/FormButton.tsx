@@ -1,9 +1,13 @@
 import './_FormButton.scss'
 
-export default function SubmitButton() {
+interface SubmitButtonProps {
+  isLastStep?: boolean;
+}
+
+export default function SubmitButton({isLastStep = false} : SubmitButtonProps) {
   return (
     <div className='button-wrapper'>
-      <button type='submit' className='primary-btn'>Next Step</button>
+      <button type='submit' className='primary-btn'>{isLastStep ? 'Confirm' : 'Next Step'}</button>
     </div>
   )
 }
